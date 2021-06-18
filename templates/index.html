@@ -6,146 +6,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
-    <title>Calculadora de Danos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Calculadora nova</title>
 </head>
 <body>
 
-    <main>
+    <div class="bg"></div>
 
-        <div class="box">
-            <section class="box-left">
+    <section>
+        
+        <div class="inimigos">
 
-                <div class="personagem">
+            {% for inimigo in inimigos %}
 
-                    <img src="../static/super-mario.png" width="150px" alt="">
+            <div id="inimigo" class="inimigo" data-vida="{{inimigo.vida}}" data-nome="{{inimigo.nome}}">
+                <img src="{{inimigo.foto}}" width="200px" height="200px" alt="">
+                <h1>{{inimigo.nome}}</h1>
+            </div><!--INIMIGO-->
+            
 
-                    <div class="personagem-info">
-                        <div class="atributo">
-                            <h2>Mario Bros</h2>
-                        </div><!--ATRIBUTO-->
+            {% endfor %}
 
-                        <div class="atributo">
-                            <h2>Velocidade</h2>
-                            <div class="barra velocidade"></div>
-                        </div><!--ATRIBUTO-->
+        </div> <!--INIMIGOS-->
 
-                        <div class="atributo">
-                            <h2>Inteligencia</h2>
-                            <div class="barra inteligencia"></div>
-                        </div><!--ATRIBUTO-->
 
-                        <div class="atributo">
-                            <h2>Destreza</h2>
-                            <div class="barra destreza"></div>
-                        </div><!--ATRIBUTO-->
-                    </div><!--PERSONAGEM INFO-->
-                </div><!--PERSONAGEM-->
-            </section><!--BOX LEFT-->
+        <div class="armas">
 
-            <section class="box-right">
+        {% for arma in armas %}
 
-                <div class="inimigos">
-                    <h1>Escolha um inimigo</h1>
+            <div id="arma" class="arma" data-dano="{{arma.dano}}" data-nome="{{arma.nome}}">
+                <img src="{{arma.foto}}" width="200px" height="200px" alt="">
+                <h1>{{arma.nome}}</h1>
+            </div><!--ARMA-->
 
-                    <div class="cards">
-                        <div class="card-inimigo octopus">
-                            <img src="../static/lula.png" width='160px'alt="">
-                            <h2>Octopus</h2>
+            {% endfor %}
+        </div><!--ARMAS-->
 
-                            <div class="atributo">
-                                <h2>Velocidade</h2>
-                                <div class="barra velocidade"></div>
-                            </div><!--ATRIBUTO-->
 
-                            <div class="atributo">
-                                <h2>Inteligencia</h2>
-                                <div class="barra inteligencia"></div>
-                            </div><!--ATRIBUTO-->
+        <div class="botao">
+            <button id="botao" onclick="calcularDano()"><i class="fa fa-calculator"></i> Calcular Dano</button>
+        </div>
 
-                            <div class="atributo">
-                                <h2>Destreza</h2>
-                                <div class="barra destreza"></div>
-                            </div><!--ATRIBUTO-->
-                        </div><!--OCTOPUS-->
+    </section> <!-- SEÇÃO COM MEUS INIMIGOS E MINHAS ARMAS-->
 
-                        <div class="card-inimigo goomba">
-                            <img src="../static/goomba.png" width='160px'alt="">
-                            <h2>Goomba</h2>
+    
 
-                            <div class="atributo">
-                                <h2>Velocidade</h2>
-                                <div class="barra velocidade"></div>
-                            </div><!--ATRIBUTO-->
 
-                            <div class="atributo">
-                                <h2>Inteligencia</h2>
-                                <div class="barra inteligencia"></div>
-                            </div><!--ATRIBUTO-->
 
-                            <div class="atributo">
-                                <h2>Destreza</h2>
-                                <div class="barra destreza"></div>
-                            </div><!--ATRIBUTO-->
-                        </div><!--GOOMBA-->
 
-                        <div class="card-inimigo koopa">
-                            <img src="../static/koopa.png" width='160px'alt="">
-                            <h2>Koopa</h2>
 
-                            <div class="atributo">
-                                <h2>Velocidade</h2>
-                                <div class="barra velocidade"></div>
-                            </div><!--ATRIBUTO-->
-
-                            <div class="atributo">
-                                <h2>Inteligencia</h2>
-                                <div class="barra inteligencia"></div>
-                            </div><!--ATRIBUTO-->
-
-                            <div class="atributo">
-                                <h2>Destreza</h2>
-                                <div class="barra destreza"></div>
-                            </div><!--ATRIBUTO-->
-
-                        </div><!--CARD-INIMIGO-->
-                        
-                    </div><!--CARDS-->
-                </div><!--INIMIGOS-->
-                
-                <div class="escolha"><h1>Escolha um poder</h1></div>
-                <div class="poderes">
-                    <div class="card-poder yoshi">
-                        <img src="../static/yoshi.png" width='100px' alt="">
-                        <h2>Yoshi</h2>
-                        <div class="atributo">
-                            <h2>Ataque</h2>
-                            <div class="barra velocidade"></div>
-                        </div><!--ATRIBUTO-->
-                    </div><!--YOSHI-->
-
-                    <div class="card-poder fogo">
-                        <img src="../static/fogo.png" width='100px' alt="">
-                        <h2>Foguinho</h2>
-                        <div class="atributo">
-                            <h2>Ataque</h2>
-                            <div class="barra velocidade"></div>
-                        </div><!--ATRIBUTO-->
-                    </div><!--YOSHI-->
-
-                    <div class="card-poder pular">
-                        <img src="../static/pular.png" width='100px' alt="">
-                        <h2>Pular</h2>
-                        <div class="atributo">
-                            <h2>Ataque</h2>
-                            <div class="barra velocidade"></div>
-                        </div> <!--ATRIBUTO-->
-                    </div> <!--YOSHI-->
-
-                </div> <!--PODERES-->
-            </section> <!--BOX RIGHT-->
-        </div> <!--BOX-->
-    </main>
-
+<script type="text/javascript" src="../static/index.js"></script>
 </body>
 </html>
